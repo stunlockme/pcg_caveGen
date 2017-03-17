@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{3699430F-DA71-4E86-951A-245C9D7BCBEB}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Engine</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+    <CLRSupport>true</CLRSupport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(DXSDK_DIR)\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(DXSDK_DIR)\Lib\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(DXSDK_DIR)\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(DXSDK_DIR)\Lib\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="fire.ps" />
+    <None Include="fire.vs" />
+    <None Include="fog.ps" />
+    <None Include="fog.vs" />
+    <None Include="font.ps" />
+    <None Include="font.vs" />
+    <None Include="light.ps" />
+    <None Include="light.vs" />
+    <None Include="particle.ps" />
+    <None Include="particle.vs" />
+    <None Include="reflection.ps" />
+    <None Include="reflection.vs" />
+    <None Include="refraction.ps" />
+    <None Include="refraction.vs" />
+    <None Include="skydome.ps" />
+    <None Include="skydome.vs" />
+    <None Include="terrain.ps" />
+    <None Include="terrain.vs" />
+    <None Include="texture.ps" />
+    <None Include="texture.vs" />
+    <None Include="water.ps" />
+    <None Include="water.vs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\bitmapclass.cpp" />
+    <ClCompile Include="source\cameraclass.cpp" />
+    <ClCompile Include="source\caveclass.cpp" />
+    <ClCompile Include="source\cpuclass.cpp" />
+    <ClCompile Include="source\d3dclass.cpp" />
+    <ClCompile Include="source\firemodelclass.cpp" />
+    <ClCompile Include="source\fireshaderclass.cpp" />
+    <ClCompile Include="source\fogshaderclass.cpp" />
+    <ClCompile Include="source\font.cpp" />
+    <ClCompile Include="source\fontshaderclass.cpp" />
+    <ClCompile Include="source\fpsclass.cpp" />
+    <ClCompile Include="source\graphicsclass.cpp" />
+    <ClCompile Include="source\inputclass.cpp" />
+    <ClCompile Include="source\lightclass.cpp" />
+    <ClCompile Include="source\lightshaderclass.cpp" />
+    <ClCompile Include="source\main.cpp" />
+    <ClCompile Include="source\modelclass.cpp" />
+    <ClCompile Include="source\particleshaderclass.cpp" />
+    <ClCompile Include="source\particlesystemclass.cpp" />
+    <ClCompile Include="source\positionclass.cpp" />
+    <ClCompile Include="source\reflectionshaderclass.cpp" />
+    <ClCompile Include="source\refractionshaderclass.cpp" />
+    <ClCompile Include="source\rendertextureclass.cpp" />
+    <ClCompile Include="source\skydomeclass.cpp" />
+    <ClCompile Include="source\skydomeshaderclass.cpp" />
+    <ClCompile Include="source\soundclass.cpp" />
+    <ClCompile Include="source\systemclass.cpp" />
+    <ClCompile Include="source\terrainclass.cpp" />
+    <ClCompile Include="source\terrainshaderclass.cpp" />
+    <ClCompile Include="source\textclass.cpp" />
+    <ClCompile Include="source\textureclass.cpp" />
+    <ClCompile Include="source\textureshaderclass.cpp" />
+    <ClCompile Include="source\timerclass.cpp" />
+    <ClCompile Include="source\watershaderclass.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="source\headers\bitmapclass.h" />
+    <ClInclude Include="source\headers\cameraclass.h" />
+    <ClInclude Include="source\headers\caveclass.h" />
+    <ClInclude Include="source\headers\cpuclass.h" />
+    <ClInclude Include="source\headers\d3dclass.h" />
+    <ClInclude Include="source\headers\firemodelclass.h" />
+    <ClInclude Include="source\headers\fireshaderclass.h" />
+    <ClInclude Include="source\headers\fogshaderclass.h" />
+    <ClInclude Include="source\headers\fontclass.h" />
+    <ClInclude Include="source\headers\fontshaderclass.h" />
+    <ClInclude Include="source\headers\fpsclass.h" />
+    <ClInclude Include="source\headers\graphicsclass.h" />
+    <ClInclude Include="source\headers\inputclass.h" />
+    <ClInclude Include="source\headers\lightclass.h" />
+    <ClInclude Include="source\headers\lightshaderclass.h" />
+    <ClInclude Include="source\headers\modelclass.h" />
+    <ClInclude Include="source\headers\particleshaderclass.h" />
+    <ClInclude Include="source\headers\particlesystemclass.h" />
+    <ClInclude Include="source\headers\positionclass.h" />
+    <ClInclude Include="source\headers\reflectionshaderclass.h" />
+    <ClInclude Include="source\headers\refractionshaderclass.h" />
+    <ClInclude Include="source\headers\rendertextureclass.h" />
+    <ClInclude Include="source\headers\skydomeclass.h" />
+    <ClInclude Include="source\headers\skydomeshaderclass.h" />
+    <ClInclude Include="source\headers\soundclass.h" />
+    <ClInclude Include="source\headers\systemclass.h" />
+    <ClInclude Include="source\headers\terrainclass.h" />
+    <ClInclude Include="source\headers\terrainshaderclass.h" />
+    <ClInclude Include="source\headers\textclass.h" />
+    <ClInclude Include="source\headers\textureclass.h" />
+    <ClInclude Include="source\headers\textureshaderclass.h" />
+    <ClInclude Include="source\headers\timerclass.h" />
+    <ClInclude Include="source\headers\watershaderclass.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
