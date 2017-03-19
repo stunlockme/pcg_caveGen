@@ -1,20 +1,13 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Filename: systemclass.cpp
 ////////////////////////////////////////////////////////////////////////////////
-#include "headers\systemclass.h"
-#include <iostream>
+#include "systemclass.h"
+
 
 SystemClass::SystemClass()
 {
 	m_Input = 0;
 	m_Graphics = 0;
-	m_Fps = 0;
-	m_Cpu = 0;
-	m_Timer = 0;
-	m_Position = 0;
-	begin_time = clock();
-	m_screenWidth = 0;
-	m_screenHeight = 0;
 }
 
 
@@ -30,16 +23,16 @@ SystemClass::~SystemClass()
 
 bool SystemClass::Initialize()
 {
-	//int screenWidth, screenHeight;
+	int screenWidth, screenHeight;
 	bool result;
 
 
 	// Initialize the width and height of the screen to zero before sending the variables into the function.
-	//screenWidth = 0;
-	//screenHeight = 0;
+	screenWidth = 0;
+	screenHeight = 0;
 
 	// Initialize the windows api.
-	InitializeWindows(m_screenWidth, m_screenHeight);
+	InitializeWindows(screenWidth, screenHeight);
 
 	// Create the input object.  This object will be used to handle reading the keyboard input from the user.
 	m_Input = new InputClass;
@@ -49,108 +42,28 @@ bool SystemClass::Initialize()
 	}
 
 	// Initialize the input object.
-	result = m_Input->Initialize(m_hinstance, m_hwnd, m_screenWidth, m_screenHeight);
-	if (!result)
+	m_Input->Initialize();
+
+	// Create the graphics object.  This object will handle rendering all the graphics for this application.
+	m_Graphics = new GraphicsClass;
+	if(!m_Graphics)
 	{
-		MessageBox(m_hwnd, L"Could not initialize the input object.", L"Error", MB_OK);
+		return false;
+	}
+
+	// Initialize the graphics object.
+	result = m_Graphics->Initialize(screenWidth, screenHeight, m_hwnd);
+	if(!result)
+	{
 		return false;
 	}
 	
-	// Create the fps object.
-	m_Fps = new FpsClass;
-	if (!m_Fps)
-		return false;
-
-	// Initialize the fps object.
-	m_Fps->Initialize();
-
-	// Create the cpu object.
-	m_Cpu = new CpuClass;
-	if (!m_Cpu)
-		return false;
-
-	// Initialize the cpu object.
-	m_Cpu->Initialize();
-
-	// Create the timer object.
-	m_Timer = new TimerClass;
-	if (!m_Timer)
-		return false;
-
-	// Initialize the timer object.
-	result = m_Timer->Initialize();
-	if (!result)
-	{
-		MessageBox(m_hwnd, L"Could not initialize the Timer object.", L"Error", MB_OK);
-		return false;
-	}
-
-	m_Graphics = new GraphicsClass;
-	if (!m_Graphics)
-		return false;
-
-	// Initialize the graphics object.
-	result = m_Graphics->Initialize(m_screenWidth, m_screenHeight, m_hwnd);
-	if (!result)
-		return false;
-
-	// Create the position object.
-	m_Position = new PositionClass;
-	if (!m_Position)
-		return false;
-
-	//create the sound object
-	m_Sound = new SoundClass;
-	if (!m_Sound)
-		return false;
-	//initialize the sound object
-	result = m_Sound->Initialize(m_hwnd);
-	if (!result)
-		return false;
-
 	return true;
 }
 
 
 void SystemClass::Shutdown()
 {
-	// Release the timer object.
-	if (m_Timer)
-	{
-		delete m_Timer;
-		m_Timer = 0;
-	}
-
-	// Release the sound object.
-	if (m_Sound)
-	{
-		m_Sound->Shutdown();
-		delete m_Sound;
-		m_Sound = 0;
-	}
-
-	// Release the position object.
-	if (m_Position)
-	{
-		delete m_Position;
-		m_Position = 0;
-	}
-
-	// Release the cpu object.
-	if (m_Cpu)
-	{
-		m_Cpu->Shutdown();
-		delete m_Cpu;
-		m_Cpu = 0;
-	}
-
-	// Release the fps object.
-	if (m_Fps)
-	{
-		delete m_Fps;
-		m_Fps = 0;
-	}
-
 	// Release the graphics object.
 	if(m_Graphics)
 	{
@@ -162,7 +75,6 @@ void SystemClass::Shutdown()
 	// Release the input object.
 	if(m_Input)
 	{
-		m_Input->Shutdown();
 		delete m_Input;
 		m_Input = 0;
 	}
@@ -208,11 +120,6 @@ void SystemClass::Run()
 				done = true;
 			}
 		}
-		// Check if the user pressed escape and wants to quit.
-		if (m_Input->IsEscapePressed() == true)
-		{
-			done = true;
-		}
 
 	}
 
@@ -222,79 +129,24 @@ void SystemClass::Run()
 
 bool SystemClass::Frame()
 {
-	bool result, keyDown, keyFdown, mouse_L_down;
-	D3DXVECTOR3 camRot, camPos;
-	int mouseX, mouseY;
+	bool result;
+	bool keyDown;
 
-	m_dt = float(clock() - begin_time) / CLOCKS_PER_SEC;
-	begin_time = clock();
 
-	// Update the system stats.
-	m_Timer->Frame();
-	m_Fps->Frame();
-	m_Cpu->Frame();
-
-	// Do the input frame processing.
-	result = m_Input->Frame();
-	if (!result)
+	// Check if the user pressed escape and wants to exit the application.
+	if(m_Input->IsKeyDown(VK_ESCAPE))
 	{
 		return false;
 	}
 
-	// Set the frame time for calculating the updated position.
-	m_Position->SetFrameTime(m_Timer->GetTime());
-
-	// Check if the left or right arrow key has been pressed, if so rotate the camera accordingly.
-	keyDown = m_Input->IsLeftArrowPressed();
-	m_Position->TurnLeft(keyDown, m_dt);
-
-	keyDown = m_Input->IsRightArrowPressed();
-	m_Position->TurnRight(keyDown, m_dt);
-
-	keyDown = m_Input->IsUpArrowPressed();
-	m_Position->LookUp(keyDown, m_dt);
-
-	keyDown = m_Input->IsDownArrowPressed();
-	m_Position->LookDown(keyDown, m_dt);
-
-	keyDown = m_Input->IsLeftPressed();
-	m_Position->MoveLeft(keyDown, m_dt);
-
-	keyDown = m_Input->IsRightPressed();
-	m_Position->MoveRight(keyDown, m_dt);
-
-	keyDown = m_Input->IsForwardPressed();
-	m_Position->MoveForward(keyDown, m_dt);
-
-	keyDown = m_Input->IsBackPressed();
-	m_Position->MoveBackward(keyDown, m_dt);
-
-	keyFdown = m_Input->IsFPressed();
-	mouse_L_down = m_Input->IsLeftMouseButtonDown();
-	m_Input->GetMouseLocation(mouseX, mouseY);
-	// Get the current view point rotation.
-	m_Position->GetRotation(camRot);
-	// Get the current position.
-	m_Position->GetPosition(camPos);
+	keyDown = (m_Input->IsKeyDown(VK_UP));
 
 	// Do the frame processing for the graphics object.
-	result = m_Graphics->Frame(m_dt, m_Fps->GetFps(), m_Cpu->GetCpuPercentage(), m_Timer->GetTime(), camRot, camPos, m_screenWidth, m_screenHeight, mouse_L_down, mouseX, mouseY);
+	result = m_Graphics->Frame(keyDown);
 	if(!result)
+	{
 		return false;
-
-	if ((camPos.x > 28.0f && camPos.x < 30.0f) || (camPos.z > 18.0f && camPos.z < 21.0f))
-	{
-		result = m_Sound->m_secondaryBuffer2->Play(0, 0, 0);
 	}
-	else if (camPos.x < 26.0f || camPos.x > 31.0f || camPos.z > 22.0f || camPos.z < 16.0f)
-	{
-		m_Sound->m_secondaryBuffer2->Stop();
-	}
-
-	if (camPos.x > 18.0f && camPos.x < 21.0f)
-		m_Sound->m_secondaryBuffer1->Play(0, 0, 0);
-	else
-		m_Sound->m_secondaryBuffer1->Stop();
 
 	return true;
 }
@@ -302,7 +154,30 @@ bool SystemClass::Frame()
 
 LRESULT CALLBACK SystemClass::MessageHandler(HWND hwnd, UINT umsg, WPARAM wparam, LPARAM lparam)
 {
-	return DefWindowProc(hwnd, umsg, wparam, lparam);
+	switch(umsg)
+	{
+		// Check if a key has been pressed on the keyboard.
+		case WM_KEYDOWN:
+		{
+			// If a key is pressed send it to the input object so it can record that state.
+			m_Input->KeyDown((unsigned int)wparam);
+			return 0;
+		}
+
+		// Check if a key has been released on the keyboard.
+		case WM_KEYUP:
+		{
+			// If a key is released then send it to the input object so it can unset the state for that key.
+			m_Input->KeyUp((unsigned int)wparam);
+			return 0;
+		}
+
+		// Any other messages send to the default message handler as our application won't make use of them.
+		default:
+		{
+			return DefWindowProc(hwnd, umsg, wparam, lparam);
+		}
+	}
 }
 
 
@@ -363,8 +238,8 @@ void SystemClass::InitializeWindows(int& screenWidth, int& screenHeight)
 	else
 	{
 		// If windowed then set it to 800x600 resolution.
-		screenWidth  = 1024;
-		screenHeight = 768;
+		screenWidth  = 800;
+		screenHeight = 600;
 
 		// Place the window in the middle of the screen.
 		posX = (GetSystemMetrics(SM_CXSCREEN) - screenWidth)  / 2;

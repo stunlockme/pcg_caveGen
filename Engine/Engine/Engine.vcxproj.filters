@@ -15,72 +15,33 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="light.ps">
-      <Filter>Shader Files</Filter>
-    </None>
-    <None Include="light.vs">
-      <Filter>Shader Files</Filter>
-    </None>
-    <None Include="texture.vs">
-      <Filter>Shader Files</Filter>
-    </None>
-    <None Include="texture.ps">
-      <Filter>Shader Files</Filter>
-    </None>
-    <None Include="font.vs">
-      <Filter>Shader Files</Filter>
-    </None>
-    <None Include="font.ps">
-      <Filter>Shader Files</Filter>
-    </None>
-    <None Include="skydome.vs">
-      <Filter>Shader Files</Filter>
-    </None>
-    <None Include="skydome.ps">
-      <Filter>Shader Files</Filter>
-    </None>
-    <None Include="terrain.vs">
-      <Filter>Shader Files</Filter>
-    </None>
-    <None Include="terrain.ps">
-      <Filter>Shader Files</Filter>
-    </None>
-    <None Include="fog.vs">
-      <Filter>Shader Files</Filter>
-    </None>
-    <None Include="fog.ps">
-      <Filter>Shader Files</Filter>
-    </None>
-    <None Include="reflection.vs">
-      <Filter>Shader Files</Filter>
-    </None>
-    <None Include="reflection.ps">
-      <Filter>Shader Files</Filter>
-    </None>
-    <None Include="refraction.vs">
-      <Filter>Shader Files</Filter>
-    </None>
-    <None Include="refraction.ps">
-      <Filter>Shader Files</Filter>
-    </None>
-    <None Include="water.vs">
-      <Filter>Shader Files</Filter>
-    </None>
-    <None Include="water.ps">
-      <Filter>Shader Files</Filter>
-    </None>
-    <None Include="fire.vs">
-      <Filter>Shader Files</Filter>
-    </None>
-    <None Include="fire.ps">
-      <Filter>Shader Files</Filter>
-    </None>
-    <None Include="particle.ps">
-      <Filter>Shader Files</Filter>
-    </None>
-    <None Include="particle.vs">
-      <Filter>Shader Files</Filter>
-    </None>
+    <ClInclude Include="headers\bitmapclass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\cameraclass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\caveclass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\d3dclass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\graphicsclass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\inputclass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\systemclass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\textureclass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\textureshaderclass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\bitmapclass.cpp">
@@ -92,28 +53,7 @@
     <ClCompile Include="source\caveclass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\cpuclass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\d3dclass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\firemodelclass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\fireshaderclass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\fogshaderclass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\font.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\fontshaderclass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\fpsclass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\graphicsclass.cpp">
@@ -122,55 +62,10 @@
     <ClCompile Include="source\inputclass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\lightclass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\lightshaderclass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\modelclass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\particleshaderclass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\particlesystemclass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\positionclass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\reflectionshaderclass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\refractionshaderclass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\rendertextureclass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\skydomeclass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\skydomeshaderclass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\soundclass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\systemclass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\terrainclass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\terrainshaderclass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\textclass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\textureclass.cpp">
@@ -179,112 +74,13 @@
     <ClCompile Include="source\textureshaderclass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\timerclass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\watershaderclass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\headers\bitmapclass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\headers\cameraclass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\headers\caveclass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\headers\cpuclass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\headers\d3dclass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\headers\firemodelclass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\headers\fireshaderclass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\headers\fogshaderclass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\headers\fontclass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\headers\fontshaderclass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\headers\fpsclass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\headers\graphicsclass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\headers\inputclass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\headers\lightclass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\headers\lightshaderclass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\headers\modelclass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\headers\particleshaderclass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\headers\particlesystemclass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\headers\positionclass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\headers\reflectionshaderclass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\headers\refractionshaderclass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\headers\rendertextureclass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\headers\skydomeclass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\headers\skydomeshaderclass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\headers\soundclass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\headers\systemclass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\headers\terrainclass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\headers\terrainshaderclass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\headers\textclass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\headers\textureclass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\headers\textureshaderclass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\headers\timerclass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\headers\watershaderclass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <None Include="shaders\texture.ps">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="shaders\texture.vs">
+      <Filter>Shader Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

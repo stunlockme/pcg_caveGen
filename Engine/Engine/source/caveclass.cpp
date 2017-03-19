@@ -1,4 +1,4 @@
-#include "headers/caveclass.h"
+#include "caveclass.h"
 
 CaveClass::CaveClass()
 {
@@ -31,6 +31,8 @@ void CaveClass::CreateMap()
 	{
 		SmoothMap();
 	}
+
+	SpawnPlayer(hashCode);
 
 	if (m_ofs != NULL)
 	{
@@ -74,6 +76,25 @@ void CaveClass::RandomFillMap(size_t hashCode)
 			{
 				m_map[x][y] = (rng->Next(0, 100) < m_randomFillPercent) ? 1 : 0;
 			}
+		}
+	}
+}
+
+void CaveClass::SpawnPlayer(size_t hashCode)
+{
+	Random^ rng = gcnew Random(hashCode);
+	while (true)
+	{
+		int x = rng->Next(0, WIDTH);
+		int y = rng->Next(0, HEIGHT);
+		if (m_map[x][y] == 1)
+		{
+			continue;
+		}
+		else
+		{
+			m_map[x][y] = 2;
+			break;
 		}
 	}
 }
