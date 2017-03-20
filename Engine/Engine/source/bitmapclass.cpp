@@ -229,7 +229,7 @@ bool BitmapClass::UpdateBuffers(ID3D11DeviceContext* deviceContext, int position
 	// If it has changed then update the position it is being rendered to.
 	m_previousPosX = positionX;
 	m_previousPosY = positionY;
-
+	m_previousPosX += 1;
 	// Calculate the screen coordinates of the left side of the bitmap.
 	left = (float)((m_screenWidth / 2) * -1) + (float)positionX;
 

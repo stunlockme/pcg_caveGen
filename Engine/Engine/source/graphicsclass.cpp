@@ -168,7 +168,7 @@ void GraphicsClass::Shutdown()
 }
 
 
-bool GraphicsClass::Frame(bool keyDown)
+bool GraphicsClass::Frame()
 {
 	bool result;
 	static float rotation = 0.0f;
@@ -182,7 +182,7 @@ bool GraphicsClass::Frame(bool keyDown)
 	}
 	
 	// Render the graphics scene.
-	result = Render(rotation, keyDown);
+	result = Render(rotation);
 	if(!result)
 	{
 		return false;
@@ -192,7 +192,7 @@ bool GraphicsClass::Frame(bool keyDown)
 }
 
 
-bool GraphicsClass::Render(float rotation, bool keyDown)
+bool GraphicsClass::Render(float rotation)
 {
 	D3DXMATRIX worldMatrix, viewMatrix, projectionMatrix, orthoMatrix;
 	bool result;

@@ -142,7 +142,7 @@ bool SystemClass::Frame()
 	keyDown = (m_Input->IsKeyDown(VK_UP));
 
 	// Do the frame processing for the graphics object.
-	result = m_Graphics->Frame(keyDown);
+	result = m_Graphics->Frame();
 	if(!result)
 	{
 		return false;
